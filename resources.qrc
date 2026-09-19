@@ -1,5 +1,8 @@
 <RCC>
     <qresource prefix="/images">
         <file>Assets/elf.png</file>
+        <file>Assets/fire.png</file>
+        <file>Assets/flower.png</file>        
+        <file>Assets/path_link.png</file>        
     </qresource>
 </RCC>
