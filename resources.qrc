@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>Assets/elf.png</file>
+    </qresource>
+</RCC>

@@ -9,7 +9,13 @@ find_package(Qt6 REQUIRED COMPONENTS Widgets)
 
 add_subdirectory(Src)
 
-add_executable(elf main.cpp)
+qt_add_resources(elf_resources
+    resources.qrc
+)
+
+add_executable(elf main.cpp 
+    ${elf_resources}
+)
 
 target_link_libraries(elf
 PRIVATE
