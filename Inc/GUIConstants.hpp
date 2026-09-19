@@ -18,6 +18,8 @@ constexpr int MINIMUM_WINDOW_HEIGHT_PX{400U};
 constexpr int WINDOW_WIDTH_PX{800U};
 constexpr int WINDOW_HEIGHT_PX{800U};
 
+constexpr double PIXMAP_FILL_RATIO{0.8f};
+
 namespace GridColors
 {
     constexpr QColor LIGHT_BLUE{52, 141, 199};
@@ -41,6 +43,9 @@ namespace GridColors
 namespace AssetPaths
 {
     const QString ELF{":/images/Assets/elf.png"};
+    const QString FLOWER{":/images/Assets/flower.png"};
+    const QString FIRE{":/images/Assets/fire.png"};
+    const QString PATH_LINK{":/images/Assets/path_link.png"};
 } // namespace AssetPaths
 
 #endif // GUI_CONSTANTS
