@@ -19,6 +19,7 @@ Object/Empty.cpp
 Object/Fire.cpp
 Object/Flower.cpp
 Object/Object.cpp
+Object/PathLink.cpp
 Simulator/Simulator.cpp
 Strategy/Strategy.cpp
 Strategy/FlowerStrategy.cpp

@@ -1,6 +1,6 @@
 #include "Simulator.hpp"
 #include "AppConstants.hpp"
-#include "Empty.hpp"
+#include "PathLink.hpp"
 
 #include <thread>
 
@@ -27,8 +27,8 @@ void Simulator::execute(void)
     }
 
     protagonist->setPositon(newPosition);
-    Object::Object_t empty = std::make_shared<Empty>(currentPosition);
-    board.setCell(currentPosition.x, currentPosition.y, nullptr);
+    Object::Object_t pathLink = std::make_shared<PathLink>(currentPosition);
+    board.setCell(currentPosition.x, currentPosition.y, pathLink);
     board.setCell(newPosition.x, newPosition.y, protagonist);
 
     std::this_thread::sleep_for(SIMULATION_UPDATE_RATE_MS);

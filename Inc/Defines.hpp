@@ -10,6 +10,7 @@ enum ObjectType
     FIRE,
     CAT,
     ELF,
+    PATH_LINK,
     EMPTY
 };
 
