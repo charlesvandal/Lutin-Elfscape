@@ -12,8 +12,8 @@ void GameWorker::run()
     {
         while (true)
         {
-            simulator->execute();
             emit stateChanged(simulator->getState());
+            simulator->execute();
         }
     }
 }
