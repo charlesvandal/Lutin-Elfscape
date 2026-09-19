@@ -21,13 +21,23 @@ protected:
     void paintEvent(QPaintEvent *event) override;
 
 private:
+    void drawGrid(QPainter &painter);
+    void drawObjects(QPainter &painter);
+    void drawObject(QPainter &painter, const ObjectDTO &object);
+    void drawPixmap(QPainter &painter, const ObjectDTO &object, QPixmap &pixmap);
+
     std::vector<QColor> getGridColors(void);
     QColor getRandomGridColor(void);
 
     int rows;
     int columns;
     std::vector<QColor> randomGridColors;
-    QPixmap protagonistPixmap;
+
+    QPixmap elfPixmap;
+    QPixmap flowerPixmap;
+    QPixmap firePixmap;
+    QPixmap pathLinkPixmap;
+
     GameState gameState;
 };
 
