@@ -11,6 +11,7 @@ Controller/Controller.cpp
 GUI/GameBoardWidget.cpp
 GUI/GameWorker.cpp
 GUI/Inc/GameBoardWidget.hpp
+GUI/Inc/GameState.hpp
 GUI/Inc/GameWorker.hpp
 Object/Cat.cpp
 Object/Elf.cpp

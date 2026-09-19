@@ -6,13 +6,19 @@
 #include <cstdlib>
 #include <random>
 
-GameBoardWidget::GameBoardWidget(int _rows, int _columns, QWidget* parent)
-    : QWidget(parent), rows{_rows}, columns{_columns}, randomGridColors{getGridColors()}
+GameBoardWidget::GameBoardWidget(int _rows, int _columns, QWidget *parent)
+    : QWidget(parent), rows{_rows}, columns{_columns}, randomGridColors{getGridColors()}, protagonistPixmap(AssetPaths::ELF)
 {
     setMinimumSize(MINIMUM_WINDOW_WIDTH_PX, MINIMUM_WINDOW_HEIGHT_PX);
 }
 
-void GameBoardWidget::paintEvent(QPaintEvent* event)
+void GameBoardWidget::setGameState(const GameState &state)
+{
+    gameState = state;
+    update();
+}
+
+void GameBoardWidget::paintEvent(QPaintEvent *event)
 {
     Q_UNUSED(event);
 
