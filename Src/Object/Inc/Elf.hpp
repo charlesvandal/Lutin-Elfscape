@@ -7,14 +7,14 @@
 
 class Elf : public Object
 {
-    public:
+public:
     Elf() = default;
-    Elf(const std::string& name);
+    Elf(const std::string &name, const Point &position);
     ~Elf() = default;
 
     bool isFren(void) override;
 
-    void print(std::ostream& os) const override;
+    void print(std::ostream &os) const override;
 };
 
 #endif // ELF_HPP
