@@ -7,14 +7,14 @@
 
 class Flower : public Object
 {
-    public:
+public:
     Flower() = default;
-    Flower(const std::string& name);
+    Flower(const std::string &name, const Point &position);
     ~Flower() = default;
 
     bool isFren(void) override;
 
-    void print(std::ostream& os) const override;
+    void print(std::ostream &os) const override;
 };
 
 #endif // FLOWER_HPP
