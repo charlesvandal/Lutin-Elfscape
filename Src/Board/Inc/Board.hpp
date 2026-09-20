@@ -35,16 +35,20 @@ public:
                  const Object::Object_t object);
 
     const Grid_t &getGrid(void) const;
+    std::uint8_t getWidth(void) const;
+    std::uint8_t getHeight(void) const;
 
     friend std::ostream &operator<<(std::ostream &os, const Board &board);
 
 private:
-    void buildGrid(const std::uint8_t numberColumns, const std::uint8_t numberRows, const InitialObjects_t &initialObjects);
-    void resizeGrid(const std::uint8_t numberColumns, const std::uint8_t numberRows);
+    void buildGrid(const InitialObjects_t &initialObjects);
+    void resizeGrid(void);
     void initializePositions(void);
     void addInitialObjects(const InitialObjects_t &initialObjects);
 
     Grid_t grid;
+    const std::uint8_t numberColumns;
+    const std::uint8_t numberRows;
 };
 
 #endif // BOARD_HPP

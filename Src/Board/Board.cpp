@@ -4,14 +4,17 @@
 #include <iostream>
 #include <utility>
 
-Board::Board(Grid_t &&_grid) : grid(std::move(_grid))
+Board::Board(Grid_t &&_grid) : grid(std::move(_grid)),
+                               numberColumns{grid.empty() ? static_cast<std::uint8_t>(0U) : static_cast<std::uint8_t>(grid.at(0).size())},
+                               numberRows{static_cast<std::uint8_t>(grid.size())}
 {
     initializePositions();
 }
 
-Board::Board(const std::uint8_t numberColumns, const std::uint8_t numberRows, const InitialObjects_t &initialObjects)
+Board::Board(const std::uint8_t numberColumns, const std::uint8_t numberRows, const InitialObjects_t &initialObjects) : numberColumns(numberColumns),
+                                                                                                                        numberRows(numberRows)
 {
-    buildGrid(numberColumns, numberRows, initialObjects);
+    buildGrid(initialObjects);
 }
 
 Surroundings_t Board::getSurroundings(const Point &targetPosition) const
@@ -98,14 +101,24 @@ const Grid_t &Board::getGrid(void) const
     return grid;
 }
 
-void Board::buildGrid(const std::uint8_t numberColumns, const std::uint8_t numberRows, const InitialObjects_t &initialObjects)
+std::uint8_t Board::getWidth(void) const
 {
-    resizeGrid(numberColumns, numberRows);
+    return numberColumns;
+}
+
+std::uint8_t Board::getHeight(void) const
+{
+    return numberRows;
+}
+
+void Board::buildGrid(const InitialObjects_t &initialObjects)
+{
+    resizeGrid();
     initializePositions();
     addInitialObjects(initialObjects);
 }
 
-void Board::resizeGrid(const std::uint8_t numberColumns, const std::uint8_t numberRows)
+void Board::resizeGrid(void)
 {
     grid.resize(numberRows);
 

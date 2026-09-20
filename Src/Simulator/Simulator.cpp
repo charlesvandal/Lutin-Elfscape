@@ -26,10 +26,13 @@ void Simulator::execute(void)
         isDed = true;
     }
 
-    protagonist->setPositon(newPosition);
-    Object::Object_t pathLink = std::make_shared<PathLink>(currentPosition);
-    board.setCell(currentPosition.x, currentPosition.y, pathLink);
-    board.setCell(newPosition.x, newPosition.y, protagonist);
+    if ((newPosition.x < board.getWidth()) && (newPosition.y < board.getHeight()))
+    {
+        protagonist->setPositon(newPosition);
+        Object::Object_t pathLink = std::make_shared<PathLink>(currentPosition);
+        board.setCell(currentPosition.x, currentPosition.y, pathLink);
+        board.setCell(newPosition.x, newPosition.y, protagonist);
+    }
 
     std::this_thread::sleep_for(SIMULATION_UPDATE_RATE_MS);
 
