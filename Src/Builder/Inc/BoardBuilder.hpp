@@ -6,7 +6,6 @@
 class BoardBuilder
 {
 public:
-    static Board buildBoard(const Object::Object_t &protagonist, const Object::Object_t &target);
     static Board buildBoard(const Object::Object_t &protagonist, const Object::Object_t &target,
                             const uint8_t numberColumns, const uint8_t numberRows);
 

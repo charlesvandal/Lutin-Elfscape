@@ -9,7 +9,7 @@ class Fire : public Object
 {
 public:
     Fire() = default;
-    Fire(const std::string &name);
+    Fire(const std::string &name, const Point &position);
     ~Fire() = default;
 
     bool isFren(void) override;
