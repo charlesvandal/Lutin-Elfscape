@@ -4,17 +4,17 @@
 #include <iostream>
 #include <utility>
 
-Board::Board(Grid_t&& _grid) : grid(std::move(_grid))
+Board::Board(Grid_t &&_grid) : grid(std::move(_grid))
 {
     initializePositions();
 }
 
-Board::Board(const std::uint8_t numberColumns, const std::uint8_t numberRows)
+Board::Board(const std::uint8_t numberColumns, const std::uint8_t numberRows, const InitialObjects_t &initialObjects)
 {
-    buildGrid(numberColumns, numberRows);
+    buildGrid(numberColumns, numberRows, initialObjects);
 }
 
-Surroundings_t Board::getSurroundings(const Point& targetPosition) const
+Surroundings_t Board::getSurroundings(const Point &targetPosition) const
 {
     Object::Object_t northObject{std::make_shared<Empty>()};
     Object::Object_t southObject{std::make_shared<Empty>()};
@@ -83,7 +83,7 @@ void Board::setCell(const std::uint8_t columnIndex, const std::uint8_t rowIndex,
     {
         if (rowIndex < grid.at(0).size())
         {
-            Row_t& row{grid.at(rowIndex)};
+            Row_t &row{grid.at(rowIndex)};
 
             if (columnIndex < row.size())
             {
@@ -93,16 +93,23 @@ void Board::setCell(const std::uint8_t columnIndex, const std::uint8_t rowIndex,
     }
 }
 
-const Grid_t& Board::getGrid(void) const
+const Grid_t &Board::getGrid(void) const
 {
     return grid;
 }
 
-void Board::buildGrid(const std::uint8_t numberColumns, const std::uint8_t numberRows)
+void Board::buildGrid(const std::uint8_t numberColumns, const std::uint8_t numberRows, const InitialObjects_t &initialObjects)
+{
+    resizeGrid(numberColumns, numberRows);
+    initializePositions();
+    addInitialObjects(initialObjects);
+}
+
+void Board::resizeGrid(const std::uint8_t numberColumns, const std::uint8_t numberRows)
 {
     grid.resize(numberRows);
 
-    for (auto& row : grid)
+    for (auto &row : grid)
     {
         row.resize(numberColumns);
     }
@@ -133,7 +140,23 @@ void Board::initializePositions(void)
     }
 }
 
-std::ostream& operator<<(std::ostream& os, const Board& board)
+void Board::addInitialObjects(const InitialObjects_t &initialObjects)
+{
+    for (auto object : initialObjects)
+    {
+        if (object)
+        {
+            const Point position{object->getPosition()};
+
+            if (position.x < grid.at(0).size() && position.y < grid.size())
+            {
+                grid[position.y][position.x] = object;
+            }
+        }
+    }
+}
+
+std::ostream &operator<<(std::ostream &os, const Board &board)
 {
     if (!board.getGrid().empty())
     {

@@ -5,16 +5,17 @@
 
 class BoardBuilder
 {
-    public:
-    static Board buildBoard(const Object::Object_t& protagonist, const Object::Object_t& target);
-    static Board buildBoard(const uint8_t numberColumns, const uint8_t numberRows);
+public:
+    static Board buildBoard(const Object::Object_t &protagonist, const Object::Object_t &target);
+    static Board buildBoard(const Object::Object_t &protagonist, const Object::Object_t &target,
+                            const uint8_t numberColumns, const uint8_t numberRows);
 
-    private:
+private:
     BoardBuilder() = delete;
-    BoardBuilder(BoardBuilder&) = delete;
-    BoardBuilder(BoardBuilder&&) = delete;
-    BoardBuilder(const BoardBuilder&) = delete;
-    BoardBuilder(const BoardBuilder&&) = delete;
+    BoardBuilder(BoardBuilder &) = delete;
+    BoardBuilder(BoardBuilder &&) = delete;
+    BoardBuilder(const BoardBuilder &) = delete;
+    BoardBuilder(const BoardBuilder &&) = delete;
     ~BoardBuilder() = delete;
 };
 

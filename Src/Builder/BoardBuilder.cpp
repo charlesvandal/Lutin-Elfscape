@@ -2,7 +2,7 @@
 #include "Cat.hpp"
 #include "Fire.hpp"
 
-Board BoardBuilder::buildBoard(const Object::Object_t& protagonist, const Object::Object_t& target)
+Board BoardBuilder::buildBoard(const Object::Object_t &protagonist, const Object::Object_t &target)
 {
     Object::Object_t cat1 = std::make_shared<Cat>("Yoko");
     Object::Object_t cat2 = std::make_shared<Cat>("Leo");
@@ -25,7 +25,9 @@ Board BoardBuilder::buildBoard(const Object::Object_t& protagonist, const Object
     return Board(std::move(grid));
 }
 
-Board BoardBuilder::buildBoard(const uint8_t numberColumns, const uint8_t numberRows)
+Board BoardBuilder::buildBoard(const Object::Object_t &protagonist, const Object::Object_t &target,
+                               const uint8_t numberColumns, const uint8_t numberRows)
 {
-    return Board(numberColumns, numberRows);
+    const InitialObjects_t initialObjects{protagonist, target};
+    return Board(numberColumns, numberRows, initialObjects);
 }
