@@ -7,14 +7,14 @@
 
 class Cat : public Object
 {
-    public:
+public:
     Cat() = default;
-    Cat(const std::string& name);
+    Cat(const std::string &name);
     ~Cat() = default;
 
     bool isFren(void) override;
 
-    void print(std::ostream& os) const override;
+    void print(std::ostream &os) const override;
 };
 
 #endif // CAT_HPP

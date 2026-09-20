@@ -7,14 +7,14 @@
 
 class Fire : public Object
 {
-    public:
+public:
     Fire() = default;
-    Fire(const std::string& name);
+    Fire(const std::string &name);
     ~Fire() = default;
 
     bool isFren(void) override;
 
-    void print(std::ostream& os) const override;
+    void print(std::ostream &os) const override;
 };
 
 #endif // FIRE_HPP

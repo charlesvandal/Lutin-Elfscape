@@ -7,14 +7,14 @@
 
 class Empty : public Object
 {
-    public:
+public:
     Empty() = default;
-    Empty(const Point& position);
+    Empty(const Point &position);
     ~Empty() = default;
 
     bool isFren(void) override;
 
-    void print(std::ostream& os) const override;
+    void print(std::ostream &os) const override;
 };
 
 #endif // EMPTY_HPP
