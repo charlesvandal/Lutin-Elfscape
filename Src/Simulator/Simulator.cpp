@@ -15,16 +15,32 @@ void Simulator::execute(void)
 {
     std::cout << board;
 
+    const Point newPosition{getProtagonistNewPosition()};
+    moveProtagonist(newPosition);
+
+    std::this_thread::sleep_for(SIMULATION_UPDATE_RATE_MS);
+
+    std::cout << board;
+}
+
+Point Simulator::getProtagonistNewPosition(void)
+{
     const Point protagonistPosition{protagonist->getPosition()};
     const Surroundings_t surroundings{board.getSurroundings(protagonistPosition)};
     const Point currentPosition{protagonist->getPosition()};
-    const Point newPosition =
-        strategy->execute(currentPosition, goal->getPosition(), surroundings);
+    const Point newPosition{strategy->execute(currentPosition, goal->getPosition(), surroundings)};
 
     if (willPepsi(newPosition, surroundings))
     {
         isDed = true;
     }
+
+    return newPosition;
+}
+
+void Simulator::moveProtagonist(const Point &newPosition)
+{
+    const Point currentPosition{protagonist->getPosition()};
 
     if ((newPosition.x < board.getWidth()) && (newPosition.y < board.getHeight()))
     {
@@ -33,10 +49,6 @@ void Simulator::execute(void)
         board.setCell(currentPosition.x, currentPosition.y, pathLink);
         board.setCell(newPosition.x, newPosition.y, protagonist);
     }
-
-    std::this_thread::sleep_for(SIMULATION_UPDATE_RATE_MS);
-
-    std::cout << board;
 }
 
 GameState Simulator::getState(void) const

@@ -20,6 +20,8 @@ public:
 private:
     Simulator() = delete;
 
+    Point getProtagonistNewPosition(void);
+    void moveProtagonist(const Point &newPosition);
     bool goalAchieved(void) const;
     bool willPepsi(const Point &newPosition, const Surroundings_t &surroundings) const;
 
