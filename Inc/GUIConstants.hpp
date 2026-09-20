@@ -9,8 +9,8 @@
 
 const QString APPLICATION_NAME{"Lutin Elfscape"};
 
-constexpr std::uint64_t NUMBER_CELLS_X{8U};
-constexpr std::uint64_t NUMBER_CELLS_Y{8U};
+constexpr std::uint64_t NUMBER_CELLS_X{20U};
+constexpr std::uint64_t NUMBER_CELLS_Y{20U};
 
 constexpr int MINIMUM_WINDOW_WIDTH_PX{400U};
 constexpr int MINIMUM_WINDOW_HEIGHT_PX{400U};
